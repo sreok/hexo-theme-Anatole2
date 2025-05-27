@@ -2,9 +2,9 @@
 
 基于Core的Anatole主题进行修改，项目地址：https://github.com/mrcore/hexo-theme-Anatole-Core
 
-Ben02原主题地址：https://github.com/Ben02/hexo-theme-Anatole。
+Ben02原主题地址：https://github.com/Ben02/hexo-theme-Anatole
 
-文档：https://github.com/Ben02/hexo-theme-Anatole/wiki
+主题使用文档：https://github.com/Ben02/hexo-theme-Anatole/wiki
 
 ## 使用
 
@@ -87,9 +87,12 @@ hexo server
 
 ## 声明
 本主题仅用于学习，非前端工作者，修改部分仅满足个人使用习惯。
+
 如有修改建议可邮箱联系
 
 ## 更新内容
+
+2025.5  首次提交
 
 1. 新增rss订阅功能
 2. 新增社交微信图标（链接跳转需手动指定，官方暂不支持链接跳转添加好友）
