@@ -1,5 +1,9 @@
 ## 介绍
 
+<div align=center>
+<img src="https://raw.githubusercontent.com/sreok/hexo-theme-Anatole2/refs/heads/main/source/images/logo.png" width = "200" height = "200" alt="Anatole2" />
+</div>
+
 基于Core的Anatole主题进行修改，项目地址：https://github.com/mrcore/hexo-theme-Anatole-Core
 
 Ben02原主题地址：https://github.com/Ben02/hexo-theme-Anatole
