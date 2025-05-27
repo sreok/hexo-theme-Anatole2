@@ -12,6 +12,12 @@ Ben02原主题地址：https://github.com/Ben02/hexo-theme-Anatole
 
 预览：https://sreok.cn
 
+<div align=center>
+<img src="https://raw.githubusercontent.com/sreok/sreok.github.io/refs/heads/master/images/c3d82da8df320cc6fdf6654ba5a7984b.png" alt="Anatole2" />
+
+<img src="https://raw.githubusercontent.com/sreok/sreok.github.io/refs/heads/master/images/0ae96558f2247fef8963572c1cab3cd4.png" alt="Anatole2" />
+</div>
+
 ## 使用
 
 1. 进入hexo的blog目录
