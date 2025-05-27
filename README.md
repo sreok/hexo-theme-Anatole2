@@ -1,4 +1,4 @@
-## 声明
+## 介绍
 
 基于Core的Anatole主题进行修改，项目地址：https://github.com/mrcore/hexo-theme-Anatole-Core
 
@@ -42,8 +42,56 @@ wechat:
 rss: true
 ```
 
-4. 生成并使用
+4. 生成tags页面、留言板页面（可选）
+开启tags页面
+```
+hexo new page tags
+```
+修改根目录`source/tags/index.md`
+```
+---
+title: tags
+date: 2025-05-26 15:04:08
+type: "tags" # 添加此行
+---
+```
+
+开启留言板（需打开Valine 评论，详见_config.yml）
+```
+hexo new page guestbook
+```
+
+修改根目录`source/guestbook/index.md`（demo）
+此页可不修改为空即可
+```
+---
+title: 
+date: 2025-05-26 15:06:03
+type: "guestbook"
+---
+<div align="center">
+  
+  <!-- dynamic typing effect 文本 -->
+  <img src="https://capsule-render.vercel.app/api?type=blur&height=300&color=gradient&text=留言板&fontColor=888fff&section=footer&reversal=true&fontAlign=50&fontSize=55&textBg=false" />
+
+</div>
+```
+注：其他页面关闭评论功能（例如关于页面），在页面开头处`---`内添加`comments: false`。
+
+
+5. 生成并使用
 ```
 hexo generate
 hexo server
 ```
+
+## 声明
+本主题仅用于学习，非前端工作者，修改部分仅满足个人使用习惯。
+如有修改建议可邮箱联系
+
+## 更新内容
+
+1. 新增rss订阅功能
+2. 新增社交微信图标（链接跳转需手动指定，官方暂不支持链接跳转添加好友）
+3. 优化底部信息
+4. 新增友链功能
