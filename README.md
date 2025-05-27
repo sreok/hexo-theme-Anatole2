@@ -6,6 +6,8 @@ Ben02原主题地址：https://github.com/Ben02/hexo-theme-Anatole
 
 主题使用文档：https://github.com/Ben02/hexo-theme-Anatole/wiki
 
+预览：https://sreok.cn
+
 ## 使用
 
 1. 进入hexo的blog目录
@@ -61,7 +63,7 @@ type: "tags" # 添加此行
 hexo new page guestbook
 ```
 
-修改根目录`source/guestbook/index.md`（demo）
+修改根目录`source/guestbook/index.md`（DEMO）
 此页可不修改为空即可
 ```
 ---
