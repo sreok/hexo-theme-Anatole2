@@ -41,3 +41,9 @@ qq:
 wechat: 
 rss: true
 ```
+
+4. 生成并使用
+```
+hexo generate
+hexo server
+```
