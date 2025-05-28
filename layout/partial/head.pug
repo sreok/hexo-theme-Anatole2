@@ -5,7 +5,7 @@ title
     block site_title
         = config.title
 block description
-    meta(name="description", content= theme.description ? theme.description : 'A Blog Powered By Hexo')
+    meta(name="description", content= theme.description ? theme.description : 'A Blog Powered By Hexo & Elijah')
 
 if page.keywords
     meta(name="keywords", content= page.keywords)
@@ -20,7 +20,9 @@ meta(content="telephone=no",name="format-detection")
 meta(name="renderer",content="webkit")
 link(rel="short icon", href=theme.avatar,type="image/x-icon")
 link(rel="stylesheet", href= url_for('css/style.css'))
+link(rel="stylesheet", href= url_for('css/search.css'))
 link(rel="stylesheet", href= url_for('css/blog_basic.css'))
 link(rel="stylesheet", href= url_for('css/font-awesome.min.css'))
 link(rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml")
 script(src= url_for('js/jquery.js'))
+script(src='/js/local-search.js')
