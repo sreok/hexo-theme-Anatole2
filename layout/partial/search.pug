@@ -1,0 +1,32 @@
+div#search-popup.hidden
+    div#search-panel
+        input(type="text", id="local-search-input", name="q", results="0", placeholder=__('搜索...'))
+        div#local-search-results
+
+script.
+    // 点击按钮显示弹窗
+    document.getElementById('search-button')?.addEventListener('click', function(event) {
+        document.getElementById('search-popup').classList.remove('hidden');
+        document.getElementById('local-search-input').focus();
+        event.stopPropagation();
+    });
+
+    // 点击弹窗外关闭
+    document.addEventListener('click', function() {
+        document.getElementById('search-popup').classList.add('hidden');
+    });
+
+    // 阻止弹窗内冒泡
+    document.getElementById('search-popup').addEventListener('click', function(event) {
+        event.stopPropagation();
+    });
+    
+    // 初始化搜索功能
+    document.addEventListener('DOMContentLoaded', function() {
+        const path = "#{config.root}search.json";
+        if (typeof searchFunc === 'function') {
+        searchFunc(path, 'local-search-input', 'local-search-results');
+        } else {
+        console.error('searchFunc is not defined');
+        }
+    });

@@ -45,11 +45,11 @@
         else
           a.fa.fa-chevron-left(onclick="window.history.go(-1)",style="display:none;") 
     
-    //- .search_btn
-    //-   li
-    //-     if theme.local_search == true 
-    //-       a(id="search-button" href="javascript:void(0);")
-    //-         i.fa.fa-search
+    .search_btn
+      li
+        if theme.local_search == true 
+          a#search-button
+            i.fa.fa-search
 
     .avatar
       if theme.right_top_logo == true

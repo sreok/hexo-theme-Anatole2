@@ -1,8 +1,6 @@
 extends partial/layout
 block content
 	.autopagerize_page_element: .content
-		//- 搜索框
-		//- include ./partial/local-search
 		- page.posts.each(function (item) {
 			include mixins
 			+make_post(item, false)
