@@ -1,0 +1,23 @@
+extends partial/layout
+
+
+block site_title
+    !=  "友链 · " + config.title
+
+block description
+    - var desc = '友链页面 - ' + config.title;
+    meta(name="description", content=desc)
+
+
+block content
+    .autopagerize_page_element: .content
+        .links-wrpper
+            h3 友链
+            ul.friend-links
+                each link in site.data.links
+                    li
+                        if link.avatar
+                            img(src=link.avatar, alt=link.title, width="40", height="40")
+                        a(href=link.url, target="_blank")= link.title
+                        if link.description
+                            span= link.description
