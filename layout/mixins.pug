@@ -40,11 +40,14 @@ mixin make_pager()
 	- var next = page.next_link
 	.pagination
 		ul.clearfix
-			if page.prev
-				li.pre.pagbuttons
+			li.pre.pagbuttons
+				if page.prev
 					a.btn(role="navigation",href=url_for(prev))= __('prev')
-			if page.next
-				li.next.pagbuttons
+			//- 分页
+			li.page-info.pagbuttons
+				span= page.current + ' / ' + page.total + '		页'
+			li.next.pagbuttons
+				if page.next
 					a.btn(role="navigation",href=url_for(next))= __('next')
 
 mixin postList()
