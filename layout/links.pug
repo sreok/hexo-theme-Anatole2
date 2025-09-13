@@ -11,13 +11,15 @@ block description
 
 block content
     .autopagerize_page_element: .content
-        .links-wrpper
-            h3 友链
-            ul.friend-links
-                each link in site.data.links
-                    li
-                        if link.avatar
-                            img(src=link.avatar, alt=link.title, width="40", height="40")
-                        a(href=link.url, target="_blank")= link.title
-                        if link.description
-                            span= link.description
+        .links-container
+            h2.page-title 友链
+            .links-grid
+                each link, index in site.data.links
+                    .link-card(style=`--delay:${index}`)
+                        a.link-card-inner(href=link.url, target="_blank", title=link.description)
+                            .link-avatar
+                                img(src=link.avatar, alt=link.title)
+                            .link-info
+                                h3.link-title #{link.title}
+                                if link.description
+                                    p.link-description #{link.description}

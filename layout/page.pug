@@ -2,7 +2,11 @@ extends partial/layout
 
 block site_title
     if is_current('tags')
-        !=  "标签 · " + config.title
+        != "标签 · " + config.title
+    else if is_current('about')
+        != "关于 · " + config.title
+    else if is_current('guestbook')
+        != "留言 · " + config.title
     else
         != page.title + " · " + config.title
 
@@ -14,12 +18,13 @@ block description
 block content
     if is_current('tags')
         .autopagerize_page_element: .content
-            .tag_box
-                script(type="text/javascript" charset="utf-8" src="/js/tagcloud.js")
-                script(type="text/javascript" charset="utf-8" src="/js/tagcanvas.js")
-                #myCanvasContainer.widget.tagcloud(align='center')
-                    canvas#resCanvas()
-                        != tagcloud()
+            .tags-page
+                h1.page-title 标签
+                .tags-grid
+                    each tag in site.tags.data
+                        a.tag-item(href=tag.permalink, style=`--delay:${index}`)
+                            span.tag-name #{tag.name}
+                            span.tag-count #{tag.length}
     else
         .autopagerize_page_element: .content: .post-page
             include mixins

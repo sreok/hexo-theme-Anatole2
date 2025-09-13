@@ -12,7 +12,7 @@ if page.keywords
 else
     meta(name="keywords" content= theme.keywords)
 
-meta(content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0",name="viewport")
+meta(content="width=device-width, initial-scale=1.0, maximum-scale=3.0, user-scalable=yes",name="viewport")
 meta(content="yes",name="apple-mobile-web-app-capable")
 meta(content="black",name="apple-mobile-web-app-status-bar-style")
 meta(content="telephone=no",name="format-detection")
@@ -26,3 +26,112 @@ link(rel="stylesheet", href= url_for('css/blog_basic.css'))
 link(rel="stylesheet", href= url_for('css/font-awesome.min.css'))
 link(rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml")
 script(src= url_for('js/jquery.js'))
+script(src= url_for('js/mobile-menu.js'))
+
+// 代码块一键复制功能 - 现代化实现
+script.
+  // 页面加载完成后执行
+  $(document).ready(function() {
+    // 为所有代码块添加复制按钮
+    $('.highlight').each(function() {
+      // 获取当前代码块元素
+      const $highlightBlock = $(this);
+      
+      // 创建复制按钮
+      const $copyBtn = $('<button class="copy-button">复制</button>');
+      
+      // 设置按钮样式
+      $copyBtn.css({
+        'position': 'absolute',
+        'top': '10px',
+        'right': '10px',
+        'z-index': '10',
+        'background': '#4b5263',
+        'color': '#abb2bf',
+        'border': 'none',
+        'border-radius': '4px',
+        'padding': '6px 12px',
+        'font-size': '12px',
+        'cursor': 'pointer',
+        'transition': 'all 0.3s ease'
+      });
+      
+      // 鼠标悬停效果
+      $copyBtn.hover(
+        function() { $(this).css({ 'background': '#5c6370', 'color': '#e6e6e6' }); },
+        function() { $(this).css({ 'background': '#4b5263', 'color': '#abb2bf' }); }
+      );
+      
+      // 将按钮添加到代码块容器
+      $highlightBlock.append($copyBtn);
+      
+      // 添加复制按钮的点击事件
+      $copyBtn.on('click', async function() {
+        try {
+          // 尝试获取代码内容 (兼容不同的代码块结构)
+          let codeContent = '';
+          const $codeElement = $highlightBlock.find('td.code pre');
+          
+          if ($codeElement.length) {
+            codeContent = $codeElement.text();
+          } else {
+            // 备用选择器，以防结构不同
+            codeContent = $highlightBlock.find('pre').text() || '';
+          }
+          
+          if (!codeContent) {
+            throw new Error('未找到代码内容');
+          }
+          
+          // 使用现代的 Clipboard API 执行复制
+          if (navigator.clipboard && window.isSecureContext) {
+            // 首选：现代安全上下文
+            await navigator.clipboard.writeText(codeContent);
+          } else {
+            // 降级方案：传统方法
+            const textArea = document.createElement('textarea');
+            textArea.value = codeContent;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            textArea.style.top = '-999999px';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+              const successful = document.execCommand('copy');
+              if (!successful) throw new Error('execCommand failed');
+            } finally {
+              document.body.removeChild(textArea);
+            }
+          }
+          
+          // 显示复制成功反馈
+          const originalText = $copyBtn.text();
+          $copyBtn.text('已复制！');
+          $copyBtn.addClass('copied');
+          $copyBtn.css({ 'background': '#10b981', 'color': 'white' });
+          
+          // 2秒后恢复按钮状态
+          setTimeout(function() {
+            $copyBtn.text(originalText);
+            $copyBtn.removeClass('copied');
+            $copyBtn.css({ 'background': '#4b5263', 'color': '#abb2bf' });
+          }, 2000);
+          
+        } catch (err) {
+          // 显示复制失败反馈
+          $copyBtn.text('复制失败');
+          $copyBtn.css({ 'background': '#ef4444', 'color': 'white' });
+          
+          // 2秒后恢复按钮状态
+          setTimeout(function() {
+            $copyBtn.text('复制');
+            $copyBtn.css({ 'background': '#4b5263', 'color': '#abb2bf' });
+          }, 2000);
+          
+          console.error('复制失败:', err);
+        }
+      });
+    });
+  });
