@@ -68,6 +68,12 @@
         a(href="/tags")= __('Tags')
 
     li
+      if is_current('projects')
+        a.current(href="/projects")= __('Projects')     
+      else
+        a(href="/projects")= __('Projects')
+
+    li
       if is_current('about')
         a.current(href="/about")= __('About')     
       else

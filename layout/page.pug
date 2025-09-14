@@ -7,6 +7,8 @@ block site_title
         != "关于 · " + config.title
     else if is_current('guestbook')
         != "留言 · " + config.title
+    else if is_current('projects')
+        != "项目 · " + config.title
     else
         != page.title + " · " + config.title
 
