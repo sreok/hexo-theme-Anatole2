@@ -21,12 +21,13 @@ block content
     if is_current('tags')
         .autopagerize_page_element: .content
             .tags-page
-                h1.page-title 标签
                 .tags-grid
-                    each tag in site.tags.data
-                        a.tag-item(href=tag.permalink, style=`--delay:${index}`)
+                    each tag in site.tags.sort('name', 1).data
+                        a.tag-item(href=tag.permalink, style=`--delay:${index * 0.02}`)
+                            span.tag-icon <i class="fas fa-hashtag"></i>
                             span.tag-name #{tag.name}
                             span.tag-count #{tag.length}
+                
     else
         .autopagerize_page_element: .content: .post-page
             include mixins
